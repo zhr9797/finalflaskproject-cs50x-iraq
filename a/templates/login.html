@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+        <title>Code4Kids - {{ title }}</title>
+    {% else %}
+        <title>Code4Kids</title>
+    {% endif %}
+
+
+    <!--  Bootstrap css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+
+    <!--  font awesome icons  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/all.min.css') }}">
+
+
+    <!--  Magnific Popup css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+
+
+    <!--  Owl-carousel css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/owl-carousel/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/owl-carousel/css/owl.theme.default.min.css') }}">
+
+
+    <!--  custom css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+    <!--  Responsive css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+    <style>
+             body {
+        background-color: #ffffff;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .main {
+        background-color: #FFFFFF;
+        width: 500px;
+        height: 600px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    }
+
+    .sign {
+        padding-top: 50px;
+        color: #11698e;
+        font-family: "Audiowide", sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .un {
+    width: 76%;
+    color:#11698e;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+
+    form.form1 {
+        padding-top: 40px;
+    }
+
+    .pass {
+    width: 80%;
+    color:#11698e;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+
+
+    .un:focus, .pass:focus {
+        border: 2px solid #11698e !important;
+
+    }
+
+    .submit {
+        cursor: pointer;
+        border-radius: 5em;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin-left: 35%;
+        font-size: 16px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        font-family: "Audiowide", sans-serif;
+
+    }
+
+
+    a {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #cdfffc;
+        text-decoration: none
+    }
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: blue;
+  background-color: transparent;
+  text-decoration: underline;
+}
+    @media (max-width: 600px) {
+        .main {
+            border-radius: 0px;
+        }
+
+    </style>
+    </head>
+
+<body>
+
+
+    <!--  ======================= Start Header Area ============================== -->
+
+    <header class="header_area">
+        <div class="main-menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="{{url_for('home')}}"><img src="static/img/logo.png" style=" float:bottom right ; width:150px ; height:40px ;" ></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('learn')}}">Learn </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('about')}}">About us </a>
+                        </li>
+
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('new_post') }}">New Post</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+     <div class="container">
+        <br>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+                <h4 class="sign">Log In</h4>
+                <br>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <small class="text-muted ml-2">
+                <a href="#">Forgot Password?</a>
+            </small>
+            <div class="border-top pt-3">
+                <h5 class="text-muted">
+                    Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+                </h5>
+            </div>
+        </form>
+    </div>
+
+ <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+      </main>
+
+</body>
+
+</html>

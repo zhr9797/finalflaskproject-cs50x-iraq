@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+        <title>Code4Kids - {{ title }}</title>
+    {% else %}
+        <title>Code4Kids</title>
+    {% endif %}
+
+
+    <!--  Bootstrap css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+
+    <!--  font awesome icons  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/all.min.css') }}">
+
+
+    <!--  Magnific Popup css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+
+
+    <!--  Owl-carousel css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/owl-carousel/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='vendor/owl-carousel/css/owl.theme.default.min.css') }}">
+
+
+    <!--  custom css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+    <!--  Responsive css file  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+<style>
+
+  </style>
+
+</head>
+
+<body>
+
+
+    <!--  ======================= Start Header Area ============================== -->
+
+    <header class="header_area">
+        <div class="main-menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="{{url_for('home')}}"><img src="static/img/logo.png" style=" float:bottom right ; width:150px ; height:40px ;" ></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('learn')}}">Learn </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('about')}}">About us </a>
+                        </li>
+
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('new_post') }}">New Post</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!--  ======================= End Header Area ============================== -->
+
+    <!--  ======================= Start Main Area ================================ -->
+    <main class="site-main">
+
+
+        <!--  ======================= Start Banner Area =======================  -->
+        <section class="site-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 site-title">
+                        <br><br><br><br><br><br>
+                        <h1 class="title-text ">WELCOME</h1>
+                        <h4 class="title-text text-uppercase">TO YOUR LEARNING PATH </h4>
+
+                            <div class="d-flex flex-row flex-wrap">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 banner-image">
+                        <img src="static/img/banner/LP.png" alt="banner-img" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  ======================= End Banner Area =======================  -->
+
+        <!--  ========================= About Area ==========================  -->
+
+        <section class="about-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-image">
+                            <img src="static/img/SAVECHILD.gif" alt="About us" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 about-title">
+                        <h2 class="text-uppercase pt-5">
+                            <span>KEEP </span>
+                            <span>YOUR KIDS SAVE </span>
+                            <span> WITH US </span>
+                        </h2>
+                        <div class="paragraph py-4 w-75">
+                            <p class="para">
+                    Protecting children in the technical age:  Today’s generation is a smart and intelligent generation that knows how to deal with computers in a stronger way than people because of the rapid shift in technologies and the information field. We called it the "Alpha" generation, "the technical generation"
+                            </p>
+                            <p class="para">
+                               here is some information to parents and kids about using the internet safely :
+                            </p>
+                            <p class="para">
+                                      <a href="https://drive.google.com/file/d/1lMqNuVOC81pXNYa5vOAYy0oEkfwURmIW/view?usp=sharing"> protect your kids by these rules</a>
+
+                            </p>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+<section class="about-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-image">
+                            <img src="static/img/CODE.png" alt="About us" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 about-title">
+                        <h2 class="text-uppercase pt-5">
+                            <h1 class="title-text "> CODING  </h1>
+                            <h4 class="title-text text-uppercase">is your child's way to prepare for the future  </h4>
+
+                        </h2>
+                        <div class="paragraph py-4 w-75">
+                            <p class="para">
+                                Why do we teach programming to children?
+                            </p>
+                            <p class="para">
+                        We teach programming to children due to that finding a solution to a problem often involves a logical sequence of steps  or actions. It helps to develop problem-solving skills such as perseverance, trial and error,understanding cause and effect, analytical reasoning and reasoning skills, in addition to math and language skills. It also develops in children the skill of thinking creatively and pursuing innovative ideas and solutions.<br>
+                        The importance of teaching programming to children come from the fact that this field has become a major nerve in the fields of life in the present and in the future, and it is claimed to be an acquired instinct and a duty in the twenty-first century.More complex, such as determining the path to launch a missile into space, etc.
+
+                            </p>
+
+                        </div>
+                </div>
+            </div>
+        </section>
+        <h1><br><h1>
+
+
+  <section class="services-area">
+
+                    <div class="col-lg-12 text-center services-title">
+                        <h1 class="text-uppercase title-text">What are the best programming languages for kids and teens?<h1>
+      <br>
+                <div class="container services-list">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4" ><a href=" https://scratch.mit.edu/" >
+                                    <img src="static/img/services/scratch.png"  style= " width:150px ; height:100px " alt="Services-1"></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h1 class="card-title text-uppercase font-roboto" > SCRATCH </h1>
+                                    <p class="card-text text-secondary">
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+<h1> &#160 &#160</h1>
+<div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4"><a href="https://www.python.org/ " >
+                                    <img src="static/img/services/pythone.png" style= " width:100px ; height:100px " alt="Services-2"></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h1 class="card-title text-uppercase font-roboto"> PYTHONE  </h1>
+                                    <p class="card-text text-secondary">
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h1> &#160 &#160</h1>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4" ><a href="https://www.ruby-lang.org/en/ " >
+                                    <img src="static/img/services/ruby.png" style= " width:150px ; height:100px " alt="Services-3"></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h1 class="card-title text-uppercase font-roboto">RUBY </h1>
+                                    <p class="card-text text-secondary">
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h1> &#160 &#160</h1>
+ <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4" ><a href="https://livecode.com/ " >
+                                    <img src="static/img/services/livecode.jpg" style= " width:150px ; height:100px " alt="Services-4"></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h1 class="card-title text-uppercase font-roboto">LIVECODE </h1>
+                                    <p class="card-text text-secondary">
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h1> &#160 &#160</h1>
+                         <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="services">
+                                <div class="sevices-img text-center py-4" ><a href="https://www.java.com/en/" >
+                                    <img src="static/img/services/JAVA.png" style= " width:150px ; height:100px " alt="Services-5"></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h1 class="card-title text-uppercase font-roboto">JAVA  </h1>
+                                    <p class="card-text text-secondary">
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h1> &#160 &#160</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <br><br><br>
+        <section class="brand-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="first-row row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo1.2.png"  class="center" alt="Brand-1 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo2.2.png"  class="center" alt="Brand-2 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo3.2.png" class="center" alt="Brand-3 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo4.2.png"  class="center"  alt="Brand-4">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo5.2.png"  class="center"  alt="Brand-5 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo6.2.png"  class="center" alt="Brand-6">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo7.2.png"   class="center" alt="Brand-7 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo8.2.png"  class="center" alt="Brand-8 ">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-brand">
+                                    <img src="static/img/brands/logo9.2.png"  class="center" alt="Brand-9">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="experience-area">
+                            <div class="d-flex flex-row years-area">
+                        <h1 class="title-text "> SOME <br></h1>
+                                     <h2>
+                                    <span> Useful websites for kids </span>
+
+                                </h2>
+
+                            </div>
+
+                            </div>
+                            <div class="bg-panel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--  ======================= End Main Area ================================ -->
+
+    <footer class="footer-area">
+        <div class="container">
+            <div class="">
+
+                </div>
+                <div class="social text-center">
+                    <h5 class="text-uppercase">Follow US </h5>
+                    <a href="https://www.facebook.com/Coding4KidsIRAQ"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/channel/UCtLzRnolFNfkI9qnyxJPMRA"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitter.com/Ali48928818"><i class="fab fa-twitter"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Jquery js file  -->
+    <script src="{{ url_for('static',filename='js/jquery.3.4.1.js') }}"></script>
+
+    <!--  Bootstrap js file  -->
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}
+"></script>
+
+    <!--  isotope js library  -->
+    <script src="{{ url_for('static',filename='vendor/isotope/isotope.min.js') }}
+"></script>
+
+    <!--  Magnific popup script file  -->
+    <script src="{{ url_for('static',filename='vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}
+"></script>
+
+    <!--  Owl-carousel js file  -->
+    <script src="{{ url_for('static',filename='vendor/owl-carousel/js/owl.carousel.min.js') }}
+"></script>
+
+    <!--  custom js file  -->
+    <script src="{{ url_for('static',filename='js/main.js') }}
+/"></script>
+
+
+</body>
+
+</html>
